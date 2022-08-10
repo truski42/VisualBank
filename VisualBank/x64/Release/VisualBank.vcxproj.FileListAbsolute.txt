@@ -1,0 +1,4 @@
+C:\git repository\VisualBank\VisualBank\x64\Release\VisualBank.vcxproj.AssemblyReference.cache
+C:\git repository\VisualBank\VisualBank\x64\Release\VisualBank.vcxproj.SuggestedBindingRedirects.cache
+C:\git repository\VisualBank\VisualBank\x64\Release\VisualBank.BankForm.resources
+C:\git repository\VisualBank\VisualBank\x64\Release\VisualBank.vcxproj.GenerateResource.cache
