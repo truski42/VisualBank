@@ -2,4 +2,5 @@ C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.AssemblyRef
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.SuggestedBindingRedirects.cache
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.BankForm.resources
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.GenerateResource.cache
-C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.NewAccount.resources
+C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.MainForm.resources
+C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.RegisterForm.resources

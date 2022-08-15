@@ -123,18 +123,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankForm.cpp" />
-    <ClCompile Include="LoginForm.cpp" />
-    <ClCompile Include="NewAccount.cpp" />
+    <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RegisterForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BankForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="LoginForm.h">
+    <ClInclude Include="customers.h" />
+    <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="NewAccount.h">
+    <ClInclude Include="RegisterForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -142,8 +143,11 @@
     <EmbeddedResource Include="BankForm.resx">
       <DependentUpon>BankForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewAccount.resx">
-      <DependentUpon>NewAccount.h</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterForm.resx">
+      <DependentUpon>RegisterForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

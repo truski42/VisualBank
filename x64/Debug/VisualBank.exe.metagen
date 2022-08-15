@@ -1,5 +1,6 @@
   VisualBank.BankForm.resources - Embedded, ContainedInManifestFile, 
-  VisualBank.NewAccount.resources - Embedded, ContainedInManifestFile, 
+  VisualBank.MainForm.resources - Embedded, ContainedInManifestFile, 
+  VisualBank.RegisterForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly VisualBank, Version=0.0.*, Culture=Język niezmienny (kraj niezmienny): 
 	hash=SHA1, flags=PublicKey
@@ -15,12 +16,33 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class Customers: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 id : Public
+    System.String firstName : Public
+    System.String lastName : Public
+    System.String email : Public
+    System.String password : Public
+    System.String address : Public
+    System.String personalID : Public
+    System.String accountNumber : Public
 Class VisualBank.BankForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class VisualBank.LoginForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Fields:
+    Customers customer : Public
+    Boolean switchToRegister : Public
+Class VisualBank.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(Customers): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class VisualBank.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class VisualBank.NewAccount: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean switchToLogin : Public
+    System.Random number : Public
+    Int32 x : Public
+    Customers customer : Public
+  Methods:
+    gen_random(Int32 IsConst): PrivateScope, Public, HideBySig
