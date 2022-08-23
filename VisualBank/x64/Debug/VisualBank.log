@@ -1,6 +1,8 @@
-﻿  Program.cpp
-C:\git repository\VisualBank\VisualBank\BankForm.h(244,20): warning C4101: "e": lokalna zmienna, do której nie istnieje odwołanie
-  RegisterForm.cpp
-  Generowanie kodu...
-  BankForm.obj : napotkano moduł MSIL; konsolidowanie przyrostowe jest wyłączone dla modułów MSIL; zostanie wykonana pełna konsolidacja
+﻿  BankForm.cpp
+C:\git repository\VisualBank\VisualBank\BankForm.h(309,21): warning C4101: 'e': unreferenced local variable
+  MainForm.cpp
+  Program.cpp
+C:\git repository\VisualBank\VisualBank\BankForm.h(309,21): warning C4101: 'e': unreferenced local variable
+  Generating Code...
+  BankForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   VisualBank.vcxproj -> C:\git repository\VisualBank\x64\Debug\VisualBank.exe

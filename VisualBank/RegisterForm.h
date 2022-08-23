@@ -50,7 +50,7 @@ namespace VisualBank {
 	private: System::Windows::Forms::TextBox^ tbName;
 	private: System::Windows::Forms::TextBox^ tbLast;
 	private: System::Windows::Forms::TextBox^ tbEmail;
-	private: System::Windows::Forms::TextBox^ tbPass;
+
 	private: System::Windows::Forms::TextBox^ tbPersonal;
 	private: System::Windows::Forms::Button^ bOK;
 	private: System::Windows::Forms::Button^ bCancel;
@@ -59,7 +59,23 @@ namespace VisualBank {
 	private: System::Windows::Forms::TextBox^ tbAddress;
 
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::LinkLabel^ llLogin;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ tbPass;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Label^ label9;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,6 +100,7 @@ namespace VisualBank {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RegisterForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -93,7 +110,6 @@ namespace VisualBank {
 			this->tbName = (gcnew System::Windows::Forms::TextBox());
 			this->tbLast = (gcnew System::Windows::Forms::TextBox());
 			this->tbEmail = (gcnew System::Windows::Forms::TextBox());
-			this->tbPass = (gcnew System::Windows::Forms::TextBox());
 			this->tbPersonal = (gcnew System::Windows::Forms::TextBox());
 			this->bOK = (gcnew System::Windows::Forms::Button());
 			this->bCancel = (gcnew System::Windows::Forms::Button());
@@ -101,18 +117,21 @@ namespace VisualBank {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->tbAddress = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->llLogin = (gcnew System::Windows::Forms::LinkLabel());
+			this->tbPass = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(614, 46);
+			this->label1->Size = System::Drawing::Size(453, 46);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"REGISTRATION";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -120,9 +139,11 @@ namespace VisualBank {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 117);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label2->Location = System::Drawing::Point(3, 62);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(96, 25);
+			this->label2->Size = System::Drawing::Size(72, 19);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"First name";
 			this->label2->Click += gcnew System::EventHandler(this, &RegisterForm::label2_Click);
@@ -130,9 +151,11 @@ namespace VisualBank {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 153);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label3->Location = System::Drawing::Point(3, 98);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(95, 25);
+			this->label3->Size = System::Drawing::Size(71, 19);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Last name";
 			this->label3->Click += gcnew System::EventHandler(this, &RegisterForm::label3_Click);
@@ -140,139 +163,213 @@ namespace VisualBank {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(12, 198);
+			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label4->Location = System::Drawing::Point(3, 143);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(55, 25);
+			this->label4->Size = System::Drawing::Size(42, 19);
 			this->label4->TabIndex = 3;
 			this->label4->Text = L"Email";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(13, 315);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label5->Location = System::Drawing::Point(4, 260);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(90, 25);
+			this->label5->Size = System::Drawing::Size(69, 19);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Password";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(12, 236);
+			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label6->Location = System::Drawing::Point(3, 181);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(103, 25);
+			this->label6->Size = System::Drawing::Size(81, 19);
 			this->label6->TabIndex = 5;
 			this->label6->Text = L"Personal ID";
 			this->label6->Click += gcnew System::EventHandler(this, &RegisterForm::label6_Click);
 			// 
 			// tbName
 			// 
-			this->tbName->Location = System::Drawing::Point(193, 117);
+			this->tbName->BackColor = System::Drawing::SystemColors::Window;
+			this->tbName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbName->Location = System::Drawing::Point(184, 62);
 			this->tbName->Name = L"tbName";
-			this->tbName->Size = System::Drawing::Size(392, 32);
-			this->tbName->TabIndex = 6;
+			this->tbName->Size = System::Drawing::Size(251, 25);
+			this->tbName->TabIndex = 0;
 			// 
 			// tbLast
 			// 
-			this->tbLast->Location = System::Drawing::Point(193, 155);
+			this->tbLast->BackColor = System::Drawing::SystemColors::Window;
+			this->tbLast->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbLast->Location = System::Drawing::Point(184, 100);
 			this->tbLast->Name = L"tbLast";
-			this->tbLast->Size = System::Drawing::Size(392, 32);
-			this->tbLast->TabIndex = 7;
+			this->tbLast->Size = System::Drawing::Size(251, 25);
+			this->tbLast->TabIndex = 1;
 			// 
 			// tbEmail
 			// 
-			this->tbEmail->Location = System::Drawing::Point(193, 195);
+			this->tbEmail->BackColor = System::Drawing::SystemColors::Window;
+			this->tbEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbEmail->Location = System::Drawing::Point(184, 140);
 			this->tbEmail->Name = L"tbEmail";
-			this->tbEmail->Size = System::Drawing::Size(392, 32);
-			this->tbEmail->TabIndex = 8;
-			// 
-			// tbPass
-			// 
-			this->tbPass->Location = System::Drawing::Point(193, 312);
-			this->tbPass->Name = L"tbPass";
-			this->tbPass->Size = System::Drawing::Size(392, 32);
-			this->tbPass->TabIndex = 9;
+			this->tbEmail->Size = System::Drawing::Size(251, 25);
+			this->tbEmail->TabIndex = 2;
 			// 
 			// tbPersonal
 			// 
-			this->tbPersonal->Location = System::Drawing::Point(193, 236);
+			this->tbPersonal->BackColor = System::Drawing::SystemColors::Window;
+			this->tbPersonal->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbPersonal->Location = System::Drawing::Point(184, 181);
 			this->tbPersonal->Name = L"tbPersonal";
-			this->tbPersonal->Size = System::Drawing::Size(392, 32);
-			this->tbPersonal->TabIndex = 10;
+			this->tbPersonal->Size = System::Drawing::Size(251, 25);
+			this->tbPersonal->TabIndex = 3;
 			// 
 			// bOK
 			// 
-			this->bOK->Location = System::Drawing::Point(193, 408);
+			this->bOK->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->bOK->FlatAppearance->BorderSize = 0;
+			this->bOK->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bOK->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->bOK->ForeColor = System::Drawing::Color::White;
+			this->bOK->Location = System::Drawing::Point(184, 338);
 			this->bOK->Name = L"bOK";
-			this->bOK->Size = System::Drawing::Size(190, 41);
+			this->bOK->Size = System::Drawing::Size(254, 28);
 			this->bOK->TabIndex = 11;
-			this->bOK->Text = L"OK";
-			this->bOK->UseVisualStyleBackColor = true;
+			this->bOK->Text = L"REGISTER";
+			this->bOK->UseVisualStyleBackColor = false;
 			this->bOK->Click += gcnew System::EventHandler(this, &RegisterForm::bOK_Click);
 			// 
 			// bCancel
 			// 
-			this->bCancel->Location = System::Drawing::Point(395, 408);
+			this->bCancel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->bCancel->FlatAppearance->BorderSize = 0;
+			this->bCancel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bCancel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->bCancel->ForeColor = System::Drawing::Color::White;
+			this->bCancel->Location = System::Drawing::Point(12, 338);
 			this->bCancel->Name = L"bCancel";
-			this->bCancel->Size = System::Drawing::Size(190, 41);
+			this->bCancel->Size = System::Drawing::Size(121, 28);
 			this->bCancel->TabIndex = 12;
-			this->bCancel->Text = L"Cancel";
-			this->bCancel->UseVisualStyleBackColor = true;
+			this->bCancel->Text = L"CLEAR";
+			this->bCancel->UseVisualStyleBackColor = false;
 			this->bCancel->Click += gcnew System::EventHandler(this, &RegisterForm::bCancel_Click);
 			// 
 			// tbConfirmPwd
 			// 
-			this->tbConfirmPwd->Location = System::Drawing::Point(193, 350);
+			this->tbConfirmPwd->BackColor = System::Drawing::SystemColors::Window;
+			this->tbConfirmPwd->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbConfirmPwd->Location = System::Drawing::Point(184, 298);
 			this->tbConfirmPwd->Name = L"tbConfirmPwd";
-			this->tbConfirmPwd->Size = System::Drawing::Size(392, 32);
-			this->tbConfirmPwd->TabIndex = 14;
+			this->tbConfirmPwd->PasswordChar = '*';
+			this->tbConfirmPwd->Size = System::Drawing::Size(254, 25);
+			this->tbConfirmPwd->TabIndex = 6;
+			this->tbConfirmPwd->TextChanged += gcnew System::EventHandler(this, &RegisterForm::tbConfirmPwd_TextChanged);
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(12, 353);
+			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label7->Location = System::Drawing::Point(3, 298);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(156, 25);
+			this->label7->Size = System::Drawing::Size(122, 19);
 			this->label7->TabIndex = 13;
 			this->label7->Text = L"Confirm Password";
 			this->label7->Click += gcnew System::EventHandler(this, &RegisterForm::label7_Click);
 			// 
 			// tbAddress
 			// 
-			this->tbAddress->Location = System::Drawing::Point(193, 274);
+			this->tbAddress->BackColor = System::Drawing::SystemColors::Window;
+			this->tbAddress->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbAddress->Location = System::Drawing::Point(184, 219);
 			this->tbAddress->Name = L"tbAddress";
-			this->tbAddress->Size = System::Drawing::Size(392, 32);
-			this->tbAddress->TabIndex = 16;
+			this->tbAddress->Size = System::Drawing::Size(251, 25);
+			this->tbAddress->TabIndex = 4;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(12, 278);
+			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label8->Location = System::Drawing::Point(3, 223);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(77, 25);
+			this->label8->Size = System::Drawing::Size(60, 19);
 			this->label8->TabIndex = 15;
 			this->label8->Text = L"Address";
 			// 
-			// llLogin
+			// tbPass
 			// 
-			this->llLogin->AutoSize = true;
-			this->llLogin->LinkColor = System::Drawing::Color::Black;
-			this->llLogin->Location = System::Drawing::Point(529, 452);
-			this->llLogin->Name = L"llLogin";
-			this->llLogin->Size = System::Drawing::Size(56, 25);
-			this->llLogin->TabIndex = 17;
-			this->llLogin->TabStop = true;
-			this->llLogin->Text = L"Login";
-			this->llLogin->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &RegisterForm::llLogin_LinkClicked);
+			this->tbPass->BackColor = System::Drawing::SystemColors::Window;
+			this->tbPass->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbPass->Location = System::Drawing::Point(184, 257);
+			this->tbPass->Name = L"tbPass";
+			this->tbPass->PasswordChar = '*';
+			this->tbPass->Size = System::Drawing::Size(251, 25);
+			this->tbPass->TabIndex = 5;
+			this->tbPass->TextChanged += gcnew System::EventHandler(this, &RegisterForm::tbPass_TextChanged);
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->ForeColor = System::Drawing::Color::White;
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->Location = System::Drawing::Point(396, 258);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(39, 25);
+			this->button1->TabIndex = 18;
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &RegisterForm::button1_Click_1);
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->ForeColor = System::Drawing::Color::White;
+			this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
+			this->button2->Location = System::Drawing::Point(396, 257);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(39, 25);
+			this->button2->TabIndex = 19;
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &RegisterForm::button2_Click);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label9->ForeColor = System::Drawing::Color::DimGray;
+			this->label9->Location = System::Drawing::Point(279, 381);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(73, 23);
+			this->label9->TabIndex = 27;
+			this->label9->Text = L"LOGIN";
+			this->label9->Click += gcnew System::EventHandler(this, &RegisterForm::label9_Click);
 			// 
 			// RegisterForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(10, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->BackColor = System::Drawing::SystemColors::Info;
-			this->ClientSize = System::Drawing::Size(638, 486);
-			this->Controls->Add(this->llLogin);
+			this->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->ClientSize = System::Drawing::Size(477, 413);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->tbAddress);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->tbConfirmPwd);
@@ -292,10 +389,12 @@ namespace VisualBank {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->Name = L"RegisterForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"RegisterForm";
+			this->Load += gcnew System::EventHandler(this, &RegisterForm::RegisterForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -310,15 +409,18 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void bCancel_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
+	tbName->Text = "";
+	tbLast->Text = "";
+	tbAddress->Text = "";
+	tbConfirmPwd->Text = "";
+	tbEmail->Text = "";
+	tbPass->Text = "";
+	tbPersonal->Text = "";
+	tbName->Focus();
 }
 
 public: bool switchToLogin = false;
 
-private: System::Void llLogin_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	this->switchToLogin = true;
-	this->Close();
-}
 
 // Creating random account number 
 
@@ -390,13 +492,39 @@ private: System::Void bOK_Click(System::Object^ sender, System::EventArgs^ e) {
 		customer->address = address;
 		customer->personalID = personal;
 		customer->accountNumber = accountNumber;
-
+		
+		MessageBox::Show("This is your account number, please remember it, you will need it to log in: " + accountNumber);
 		this->Close();
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show(ex +"Failed to register new user",
 			"Register Failure", MessageBoxButtons::OK);
 	}
+}
+private: System::Void RegisterForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void tbPass_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void tbConfirmPwd_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (tbPass->PasswordChar == '*' || tbConfirmPwd->PasswordChar == '*') {
+		button1->BringToFront();
+		tbPass->PasswordChar = '\0';
+		tbConfirmPwd->PasswordChar = '\0';
+	}
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	if (tbPass->PasswordChar == '\0' || tbConfirmPwd->PasswordChar == '\0') {
+		button2->BringToFront();
+		tbPass->PasswordChar = '*';
+		tbConfirmPwd->PasswordChar = '*';
+	}
+}
+private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->switchToLogin = true;
+	this->Close();
 }
 };
 }

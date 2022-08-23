@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankForm.cpp" />
+    <ClCompile Include="FormAccount.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
@@ -132,6 +133,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="customers.h" />
+    <ClInclude Include="FormAccount.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -142,6 +146,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BankForm.resx">
       <DependentUpon>BankForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAccount.resx">
+      <DependentUpon>FormAccount.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

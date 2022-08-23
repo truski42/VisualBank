@@ -1,8 +1,9 @@
   VisualBank.BankForm.resources - Embedded, ContainedInManifestFile, 
+  VisualBank.FormAccount.resources - Embedded, ContainedInManifestFile, 
   VisualBank.MainForm.resources - Embedded, ContainedInManifestFile, 
   VisualBank.RegisterForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
-Assembly VisualBank, Version=0.0.*, Culture=Język niezmienny (kraj niezmienny): 
+Assembly VisualBank, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
@@ -33,6 +34,9 @@ Class VisualBank.BankForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     Customers customer : Public
     Boolean switchToRegister : Public
+Class VisualBank.FormAccount: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class VisualBank.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Customers): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
