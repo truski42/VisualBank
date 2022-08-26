@@ -1,6 +1,6 @@
   VisualBank.BankForm.resources - Embedded, ContainedInManifestFile, 
-  VisualBank.FormAccount.resources - Embedded, ContainedInManifestFile, 
   VisualBank.MainForm.resources - Embedded, ContainedInManifestFile, 
+  VisualBank.PaymentForm.resources - Embedded, ContainedInManifestFile, 
   VisualBank.RegisterForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly VisualBank, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
@@ -28,13 +28,16 @@ Class Customers: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.String address : Public
     System.String personalID : Public
     System.String accountNumber : Public
+    System.ValueType availableBalance Decimal IsBoxed : Public
+    System.ValueType soldo Decimal IsBoxed : Public
+    System.ValueType interlocks Decimal IsBoxed : Public
 Class VisualBank.BankForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Customers customer : Public
     Boolean switchToRegister : Public
-Class VisualBank.FormAccount: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class VisualBank.PaymentForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class VisualBank.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

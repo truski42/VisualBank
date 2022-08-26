@@ -123,8 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankForm.cpp" />
-    <ClCompile Include="FormAccount.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
   </ItemGroup>
@@ -133,10 +133,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="customers.h" />
-    <ClInclude Include="FormAccount.h">
+    <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MainForm.h">
+    <ClInclude Include="PaymentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RegisterForm.h">
@@ -147,11 +147,11 @@
     <EmbeddedResource Include="BankForm.resx">
       <DependentUpon>BankForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAccount.resx">
-      <DependentUpon>FormAccount.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.h</DependentUpon>

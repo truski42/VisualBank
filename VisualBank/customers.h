@@ -13,4 +13,7 @@ public:
 	String^ address;
 	String^ personalID;
 	String^ accountNumber;
+	Decimal^ availableBalance;
+	Decimal^ soldo;
+	Decimal^ interlocks;
 };

@@ -235,8 +235,7 @@ namespace VisualBank {
 			// 
 			// BankForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(10, 25);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(308, 311);
@@ -299,6 +298,10 @@ namespace VisualBank {
 				customer->address = reader->GetString(5);
 				customer->personalID = reader->GetString(6);
 				customer->accountNumber = reader->GetString(7);
+				customer->availableBalance = reader->GetDecimal(8);
+				customer->soldo = reader->GetDecimal(9);
+				customer->interlocks = reader->GetDecimal(10);
+
 				this->Close();
 			}
 			else {
