@@ -22,6 +22,7 @@ namespace VisualBank {
 	public:
 		RegisterForm(void)
 		{
+
 			srand((unsigned)time(NULL));
 			InitializeComponent();
 			//
@@ -29,7 +30,6 @@ namespace VisualBank {
 			//
 			this->CenterToScreen();
 		}
-
 	protected:
 		/// <summary>
 		/// Wyczyœæ wszystkie u¿ywane zasoby.
@@ -67,24 +67,6 @@ namespace VisualBank {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label9;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	protected:
 
 	private:
@@ -458,17 +440,22 @@ private: System::Void bOK_Click(System::Object^ sender, System::EventArgs^ e) {
 			"On or more empty fields", MessageBoxButtons::OK);
 		return;
 	}
+	// Password validation
 	if (String::Compare(password, confirmPassword) != 0) {
 		MessageBox::Show("Password and Confirm Password do not match",
 			"Password Error", MessageBoxButtons::OK);
 		return;
 	}
 
-	// Connecting to database
 	try {
+
+		// Attempt to connect to a database
+
 		String^ connString = "Data Source=localhost\\mssqlserver01;Initial Catalog=banksystem;Integrated Security=True";
 		SqlConnection sqlConn(connString);
 		sqlConn.Open();
+
+		// Creating a database query
 
 		String^ sqlQuery = "INSERT INTO customers (firstName, lastName, email, password, address, personalID, accountNumber) VALUES "+
 			"(@firstName, @lastName, @email, @password, @address, @personalID, @accountNumber); ";
@@ -481,7 +468,8 @@ private: System::Void bOK_Click(System::Object^ sender, System::EventArgs^ e) {
 		command.Parameters->AddWithValue("@address", address);
 		command.Parameters->AddWithValue("@personalID", personal);
 		command.Parameters->AddWithValue("@accountNumber", accountNumber);
-
+		
+		// Assigning values in the database using a label
 
 		command.ExecuteNonQuery();
 		customer = gcnew Customers;
@@ -494,6 +482,7 @@ private: System::Void bOK_Click(System::Object^ sender, System::EventArgs^ e) {
 		customer->accountNumber = accountNumber;
 		
 		MessageBox::Show("This is your account number, please remember it, you will need it to log in: " + accountNumber);
+		sqlConn.Close();
 		this->Close();
 	}
 	catch (Exception^ ex) {

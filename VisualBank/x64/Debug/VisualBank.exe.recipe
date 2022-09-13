@@ -2,7 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\git repository\VisualBank\x64\Debug\VisualBank.exe</FullPath>
+      <FullPath>C:\git repository\truski42\VisualBank\x64\Debug\CustomPanels.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\git repository\truski42\VisualBank\x64\Debug\VisualBank.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -5,3 +5,11 @@ C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.GenerateRes
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.MainForm.resources
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.RegisterForm.resources
 C:\git repository\VisualBank\VisualBank\x64\Debug\VisualBank.PaymentForm.resources
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.AssemblyReference.cache
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.SuggestedBindingRedirects.cache
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.BankForm.resources
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.MainForm.resources
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.PaymentForm.resources
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.RegisterForm.resources
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.GenerateResource.cache
+C:\git repository\truski42\VisualBank\VisualBank\x64\Debug\VisualBank.vcxproj.CopyComplete

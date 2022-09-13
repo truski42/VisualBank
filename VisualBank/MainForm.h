@@ -1,6 +1,8 @@
 #pragma once
+#include <iostream>
 #include "customers.h"
 #include "PaymentForm.h"
+#include <string>
 namespace VisualBank {
 
 	using namespace System;
@@ -9,6 +11,7 @@ namespace VisualBank {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Podsumowanie informacji o MainForm
@@ -22,6 +25,7 @@ namespace VisualBank {
 			//
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
+			int balance = System::Convert::ToInt32(customer->soldo);
 			label1->Text = customer->firstName + " " + customer->lastName;
 			lbAccountInfo->Text = "A/C " + customer->accountNumber;
 			lbBalance->Text = customer->availableBalance->ToString() + " PLN";
@@ -29,7 +33,7 @@ namespace VisualBank {
 				lbSoldo->Text = "0,00 PLN";
 			}
 			else {
-				lbSoldo->Text = customer->soldo->ToString() + " PLN";
+				lbSoldo->Text = customer->soldo + " PLN";
 			}
 			if (customer->interlocks == nullptr) {
 				lbInterlocks->Text = "0,00 PLN";
@@ -38,6 +42,7 @@ namespace VisualBank {
 				lbInterlocks->Text = "-" + customer->interlocks->ToString() + " PLN";
 			}
 			this->CenterToScreen();
+			pnlTransfer->Hide();
 		}
 
 	protected:
@@ -82,6 +87,46 @@ namespace VisualBank {
 	private: System::Windows::Forms::Label^ lbSoldo;
 	private: System::Windows::Forms::Label^ lbInterlocks;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::PageSetupDialog^ pageSetupDialog1;
+	private: System::Windows::Forms::Panel^ pnlTransfer;
+	private: System::Windows::Forms::Panel^ pnlNavigationTransfer;
+	private: System::Windows::Forms::Button^ btnNational;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ btnOwn;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Panel^ pnlOwnTransfer;
+	private: System::Windows::Forms::Label^ lbTransfer;
+
+	private: System::Windows::Forms::Label^ lbOwn;
+	private: System::Windows::Forms::Button^ bntSubmit;
+	private: System::Windows::Forms::TextBox^ tbAccount;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+
+	private: System::Windows::Forms::Panel^ pnlNationalTransfer;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Panel^ pnlFXTransfer;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Panel^ pnlTaxTransfer;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::NumericUpDown^ tbAmount;
+	private: System::Windows::Forms::Button^ bntClearOwn;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -118,10 +163,10 @@ namespace VisualBank {
 			this->btStart = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->lbAccountInfo = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->plBalance = (gcnew System::Windows::Forms::Panel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->lbInterlocks = (gcnew System::Windows::Forms::Label());
@@ -130,11 +175,40 @@ namespace VisualBank {
 			this->lbBalance = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pageSetupDialog1 = (gcnew System::Windows::Forms::PageSetupDialog());
+			this->pnlTransfer = (gcnew System::Windows::Forms::Panel());
+			this->pnlNavigationTransfer = (gcnew System::Windows::Forms::Panel());
+			this->btnNational = (gcnew System::Windows::Forms::Button());
+			this->btnOwn = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->pnlOwnTransfer = (gcnew System::Windows::Forms::Panel());
+			this->tbAmount = (gcnew System::Windows::Forms::NumericUpDown());
+			this->lbTransfer = (gcnew System::Windows::Forms::Label());
+			this->lbOwn = (gcnew System::Windows::Forms::Label());
+			this->bntSubmit = (gcnew System::Windows::Forms::Button());
+			this->tbAccount = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->pnlTaxTransfer = (gcnew System::Windows::Forms::Panel());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->pnlNationalTransfer = (gcnew System::Windows::Forms::Panel());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->pnlFXTransfer = (gcnew System::Windows::Forms::Panel());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->bntClearOwn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panel3->SuspendLayout();
 			this->plBalance->SuspendLayout();
+			this->pnlTransfer->SuspendLayout();
+			this->pnlNavigationTransfer->SuspendLayout();
+			this->pnlOwnTransfer->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAmount))->BeginInit();
+			this->pnlTaxTransfer->SuspendLayout();
+			this->pnlNationalTransfer->SuspendLayout();
+			this->pnlFXTransfer->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -261,6 +335,7 @@ namespace VisualBank {
 			this->btStart->TabIndex = 0;
 			this->btStart->Text = L"Start";
 			this->btStart->UseVisualStyleBackColor = false;
+			this->btStart->Click += gcnew System::EventHandler(this, &MainForm::btStart_Click);
 			// 
 			// button1
 			// 
@@ -281,48 +356,13 @@ namespace VisualBank {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::WhiteSmoke;
-			this->panel2->Controls->Add(this->button3);
-			this->panel2->Controls->Add(this->button2);
 			this->panel2->Controls->Add(this->panel3);
-			this->panel2->Controls->Add(this->plBalance);
 			this->panel2->Location = System::Drawing::Point(151, 0);
 			this->panel2->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(186, 253);
+			this->panel2->Size = System::Drawing::Size(186, 122);
 			this->panel2->TabIndex = 5;
 			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::panel2_Paint);
-			// 
-			// button3
-			// 
-			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
-				static_cast<System::Int32>(static_cast<System::Byte>(214)));
-			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(214)));
-			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button3->ForeColor = System::Drawing::Color::White;
-			this->button3->Location = System::Drawing::Point(96, 224);
-			this->button3->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(90, 29);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Tranfser";
-			this->button3->UseVisualStyleBackColor = false;
-			// 
-			// button2
-			// 
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->button2->Location = System::Drawing::Point(0, 224);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(86, 29);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"History";
-			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// panel3
 			// 
@@ -350,20 +390,55 @@ namespace VisualBank {
 			this->lbAccountInfo->Text = L"UserINFo";
 			this->lbAccountInfo->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(110)), static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button3->ForeColor = System::Drawing::Color::White;
+			this->button3->Location = System::Drawing::Point(96, 92);
+			this->button3->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(90, 29);
+			this->button3->TabIndex = 3;
+			this->button3->Text = L"Tranfser";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
+			// 
+			// button2
+			// 
+			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Gray;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button2->Location = System::Drawing::Point(0, 92);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(86, 29);
+			this->button2->TabIndex = 2;
+			this->button2->Text = L"History";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
 			// plBalance
 			// 
 			this->plBalance->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->plBalance->Controls->Add(this->button3);
 			this->plBalance->Controls->Add(this->label4);
+			this->plBalance->Controls->Add(this->button2);
 			this->plBalance->Controls->Add(this->lbInterlocks);
 			this->plBalance->Controls->Add(this->lbSoldo);
 			this->plBalance->Controls->Add(this->label3);
 			this->plBalance->Controls->Add(this->lbBalance);
 			this->plBalance->Controls->Add(this->label2);
 			this->plBalance->ForeColor = System::Drawing::Color::Black;
-			this->plBalance->Location = System::Drawing::Point(1, 126);
+			this->plBalance->Location = System::Drawing::Point(345, 0);
 			this->plBalance->Margin = System::Windows::Forms::Padding(4, 3, 4, 3);
 			this->plBalance->Name = L"plBalance";
-			this->plBalance->Size = System::Drawing::Size(185, 92);
+			this->plBalance->Size = System::Drawing::Size(185, 122);
 			this->plBalance->TabIndex = 0;
 			// 
 			// label4
@@ -446,14 +521,259 @@ namespace VisualBank {
 			// 
 			this->timer1->Tick += gcnew System::EventHandler(this, &MainForm::timer1_Tick);
 			// 
+			// pnlTransfer
+			// 
+			this->pnlTransfer->Controls->Add(this->pnlNavigationTransfer);
+			this->pnlTransfer->Controls->Add(this->pnlOwnTransfer);
+			this->pnlTransfer->Controls->Add(this->pnlTaxTransfer);
+			this->pnlTransfer->Controls->Add(this->pnlNationalTransfer);
+			this->pnlTransfer->Controls->Add(this->pnlFXTransfer);
+			this->pnlTransfer->Location = System::Drawing::Point(157, 128);
+			this->pnlTransfer->Name = L"pnlTransfer";
+			this->pnlTransfer->Size = System::Drawing::Size(373, 263);
+			this->pnlTransfer->TabIndex = 2;
+			// 
+			// pnlNavigationTransfer
+			// 
+			this->pnlNavigationTransfer->Controls->Add(this->btnNational);
+			this->pnlNavigationTransfer->Controls->Add(this->btnOwn);
+			this->pnlNavigationTransfer->Controls->Add(this->button4);
+			this->pnlNavigationTransfer->Controls->Add(this->button5);
+			this->pnlNavigationTransfer->Location = System::Drawing::Point(0, 0);
+			this->pnlNavigationTransfer->Name = L"pnlNavigationTransfer";
+			this->pnlNavigationTransfer->Size = System::Drawing::Size(373, 38);
+			this->pnlNavigationTransfer->TabIndex = 9;
+			// 
+			// btnNational
+			// 
+			this->btnNational->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->btnNational->Dock = System::Windows::Forms::DockStyle::Right;
+			this->btnNational->FlatAppearance->BorderColor = System::Drawing::Color::Silver;
+			this->btnNational->FlatAppearance->BorderSize = 0;
+			this->btnNational->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnNational->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->btnNational->ForeColor = System::Drawing::Color::White;
+			this->btnNational->Location = System::Drawing::Point(0, 0);
+			this->btnNational->Name = L"btnNational";
+			this->btnNational->Size = System::Drawing::Size(82, 38);
+			this->btnNational->TabIndex = 4;
+			this->btnNational->Text = L"National";
+			this->btnNational->UseVisualStyleBackColor = false;
+			this->btnNational->Click += gcnew System::EventHandler(this, &MainForm::btnNational_Click);
+			// 
+			// btnOwn
+			// 
+			this->btnOwn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->btnOwn->Dock = System::Windows::Forms::DockStyle::Right;
+			this->btnOwn->FlatAppearance->BorderColor = System::Drawing::Color::Silver;
+			this->btnOwn->FlatAppearance->BorderSize = 0;
+			this->btnOwn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnOwn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->btnOwn->ForeColor = System::Drawing::Color::White;
+			this->btnOwn->Location = System::Drawing::Point(82, 0);
+			this->btnOwn->Name = L"btnOwn";
+			this->btnOwn->Size = System::Drawing::Size(97, 38);
+			this->btnOwn->TabIndex = 5;
+			this->btnOwn->Text = L"Own";
+			this->btnOwn->UseVisualStyleBackColor = false;
+			this->btnOwn->Click += gcnew System::EventHandler(this, &MainForm::btnOwn_Click);
+			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->button4->Dock = System::Windows::Forms::DockStyle::Right;
+			this->button4->FlatAppearance->BorderColor = System::Drawing::Color::Silver;
+			this->button4->FlatAppearance->BorderSize = 0;
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button4->ForeColor = System::Drawing::Color::White;
+			this->button4->Location = System::Drawing::Point(179, 0);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(97, 38);
+			this->button4->TabIndex = 6;
+			this->button4->Text = L"Tax";
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MainForm::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->button5->Dock = System::Windows::Forms::DockStyle::Right;
+			this->button5->FlatAppearance->BorderColor = System::Drawing::Color::Silver;
+			this->button5->FlatAppearance->BorderSize = 0;
+			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button5->ForeColor = System::Drawing::Color::White;
+			this->button5->Location = System::Drawing::Point(276, 0);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(97, 38);
+			this->button5->TabIndex = 7;
+			this->button5->Text = L"FX";
+			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MainForm::button5_Click);
+			// 
+			// pnlOwnTransfer
+			// 
+			this->pnlOwnTransfer->Controls->Add(this->bntClearOwn);
+			this->pnlOwnTransfer->Controls->Add(this->tbAmount);
+			this->pnlOwnTransfer->Controls->Add(this->lbTransfer);
+			this->pnlOwnTransfer->Controls->Add(this->lbOwn);
+			this->pnlOwnTransfer->Controls->Add(this->bntSubmit);
+			this->pnlOwnTransfer->Controls->Add(this->tbAccount);
+			this->pnlOwnTransfer->Controls->Add(this->label6);
+			this->pnlOwnTransfer->Controls->Add(this->label7);
+			this->pnlOwnTransfer->Location = System::Drawing::Point(0, 42);
+			this->pnlOwnTransfer->Name = L"pnlOwnTransfer";
+			this->pnlOwnTransfer->Size = System::Drawing::Size(373, 221);
+			this->pnlOwnTransfer->TabIndex = 10;
+			// 
+			// tbAmount
+			// 
+			this->tbAmount->Location = System::Drawing::Point(162, 96);
+			this->tbAmount->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1000000000, 0, 0, 0 });
+			this->tbAmount->Name = L"tbAmount";
+			this->tbAmount->Size = System::Drawing::Size(163, 32);
+			this->tbAmount->TabIndex = 8;
+			// 
+			// lbTransfer
+			// 
+			this->lbTransfer->AutoSize = true;
+			this->lbTransfer->Location = System::Drawing::Point(162, 178);
+			this->lbTransfer->Name = L"lbTransfer";
+			this->lbTransfer->Size = System::Drawing::Size(0, 23);
+			this->lbTransfer->TabIndex = 14;
+			// 
+			// lbOwn
+			// 
+			this->lbOwn->AutoSize = true;
+			this->lbOwn->Location = System::Drawing::Point(158, 16);
+			this->lbOwn->Name = L"lbOwn";
+			this->lbOwn->Size = System::Drawing::Size(50, 23);
+			this->lbOwn->TabIndex = 8;
+			this->lbOwn->Text = L"Own";
+			this->lbOwn->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// bntSubmit
+			// 
+			this->bntSubmit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->bntSubmit->Location = System::Drawing::Point(162, 146);
+			this->bntSubmit->Name = L"bntSubmit";
+			this->bntSubmit->Size = System::Drawing::Size(163, 25);
+			this->bntSubmit->TabIndex = 13;
+			this->bntSubmit->Text = L"Submit";
+			this->bntSubmit->UseVisualStyleBackColor = true;
+			this->bntSubmit->Click += gcnew System::EventHandler(this, &MainForm::bntSubmit_Click);
+			// 
+			// tbAccount
+			// 
+			this->tbAccount->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbAccount->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->tbAccount->Location = System::Drawing::Point(162, 54);
+			this->tbAccount->Name = L"tbAccount";
+			this->tbAccount->Size = System::Drawing::Size(163, 25);
+			this->tbAccount->TabIndex = 9;
+			// 
+			// label6
+			// 
+			this->label6->Location = System::Drawing::Point(28, 99);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(96, 29);
+			this->label6->TabIndex = 12;
+			this->label6->Text = L"Amount";
+			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label7
+			// 
+			this->label7->Location = System::Drawing::Point(28, 54);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(69, 29);
+			this->label7->TabIndex = 10;
+			this->label7->Text = L"A/C";
+			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// pnlTaxTransfer
+			// 
+			this->pnlTaxTransfer->Controls->Add(this->label10);
+			this->pnlTaxTransfer->Location = System::Drawing::Point(0, 42);
+			this->pnlTaxTransfer->Name = L"pnlTaxTransfer";
+			this->pnlTaxTransfer->Size = System::Drawing::Size(373, 221);
+			this->pnlTaxTransfer->TabIndex = 12;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(162, 16);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(40, 23);
+			this->label10->TabIndex = 0;
+			this->label10->Text = L"Tax";
+			// 
+			// pnlNationalTransfer
+			// 
+			this->pnlNationalTransfer->Controls->Add(this->label8);
+			this->pnlNationalTransfer->Location = System::Drawing::Point(0, 42);
+			this->pnlNationalTransfer->Name = L"pnlNationalTransfer";
+			this->pnlNationalTransfer->Size = System::Drawing::Size(373, 221);
+			this->pnlNationalTransfer->TabIndex = 11;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(162, 16);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(82, 23);
+			this->label8->TabIndex = 0;
+			this->label8->Text = L"National";
+			// 
+			// pnlFXTransfer
+			// 
+			this->pnlFXTransfer->Controls->Add(this->label9);
+			this->pnlFXTransfer->Location = System::Drawing::Point(0, 42);
+			this->pnlFXTransfer->Name = L"pnlFXTransfer";
+			this->pnlFXTransfer->Size = System::Drawing::Size(373, 221);
+			this->pnlFXTransfer->TabIndex = 12;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(162, 16);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(36, 23);
+			this->label9->TabIndex = 0;
+			this->label9->Text = L"FX";
+			// 
+			// bntClearOwn
+			// 
+			this->bntClearOwn->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->bntClearOwn->Location = System::Drawing::Point(32, 146);
+			this->bntClearOwn->Name = L"bntClearOwn";
+			this->bntClearOwn->Size = System::Drawing::Size(92, 25);
+			this->bntClearOwn->TabIndex = 15;
+			this->bntClearOwn->Text = L"Clear";
+			this->bntClearOwn->UseVisualStyleBackColor = true;
+			this->bntClearOwn->Click += gcnew System::EventHandler(this, &MainForm::bntClearOwn_Click);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 23);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::WhiteSmoke;
-			this->ClientSize = System::Drawing::Size(341, 403);
+			this->ClientSize = System::Drawing::Size(534, 403);
+			this->Controls->Add(this->pnlTransfer);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->plBalance);
 			this->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -467,10 +787,22 @@ namespace VisualBank {
 			this->panel3->ResumeLayout(false);
 			this->plBalance->ResumeLayout(false);
 			this->plBalance->PerformLayout();
+			this->pnlTransfer->ResumeLayout(false);
+			this->pnlNavigationTransfer->ResumeLayout(false);
+			this->pnlOwnTransfer->ResumeLayout(false);
+			this->pnlOwnTransfer->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAmount))->EndInit();
+			this->pnlTaxTransfer->ResumeLayout(false);
+			this->pnlTaxTransfer->PerformLayout();
+			this->pnlNationalTransfer->ResumeLayout(false);
+			this->pnlNationalTransfer->PerformLayout();
+			this->pnlFXTransfer->ResumeLayout(false);
+			this->pnlFXTransfer->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
-#pragma endregion
+#pragma endregion+
+	public: Customers^ customer;
 	private: System::Void lbUserInfo_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void lbUserInfo1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -499,10 +831,90 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	lbTime->Text = DateTime().Now.ToString("HH:mm:ss");
 }
 private: System::Void btPayments_Click(System::Object^ sender, System::EventArgs^ e){
+	/*
 	PaymentForm^ payments = gcnew PaymentForm();
-	payments->MdiChildren;
-	payments->Show();
-	this->Hide();
+	payments->MdiParent;
+	payments->ShowDialog();
+	//this->Activate();
+	*/
+	pnlTransfer->Show();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlTransfer->Show();
+}
+private: System::Void btStart_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlTransfer->Hide();
+}
+
+private: System::Void btnNational_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlNationalTransfer->BringToFront();
+}
+private: System::Void btnOwn_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlOwnTransfer->BringToFront();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlTaxTransfer->BringToFront();
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	pnlFXTransfer->BringToFront();
+}
+
+private: System::Void bntSubmit_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ accountNumber = this->tbAccount->Text;
+	String^ Amount = this->tbAmount->Text;
+	Decimal^ soldo = Convert::ToDecimal(Amount);
+
+	//float convertSoldo = (float)(Convert::ToDouble(sqlSoldo));
+	//float newBalance = (float)(Convert::ToDouble(Amount));
+	//float soldo = convertSoldo + newBalance;
+	if (tbAmount->Value == 0 || accountNumber->Length == 0) {
+		MessageBox::Show("Please enter account number or correct value",
+			"Account number or Value Error", MessageBoxButtons::OK);
+		return;
+	}
+	try {
+		String^ connString = "Data Source=localhost\\mssqlserver01;Initial Catalog=banksystem;Integrated Security=True";
+		SqlConnection sqlConn(connString);
+		sqlConn.Open();
+
+		String^ sqlQuery = "SELECT * FROM customers WHERE accountNumber=@accountNumber;"
+			"UPDATE Customers SET soldo += @soldo WHERE accountNumber = @accountNumber; ";
+		SqlCommand command(sqlQuery, % sqlConn);
+		command.Parameters->AddWithValue("@accountNumber", accountNumber);
+		command.Parameters->AddWithValue("@soldo", soldo);
+
+		SqlDataReader^ reader = command.ExecuteReader();
+
+		if (reader->Read()) {
+			customer = gcnew Customers;
+			customer->id = reader->GetInt32(0);
+			customer->firstName = reader->GetString(1);
+			customer->lastName = reader->GetString(2);
+			customer->email = reader->GetString(3);
+			customer->password = reader->GetString(4);
+			customer->address = reader->GetString(5);
+			customer->personalID = reader->GetString(6);
+			customer->accountNumber = reader->GetString(7);
+			customer->availableBalance = reader->GetDecimal(8);
+			customer->soldo = reader->GetDecimal(9);
+			customer->interlocks = reader->GetDecimal(10);
+
+			lbTransfer->Text = "Transfer Success";
+		}
+		else {
+			MessageBox::Show("Account number is incorrect or amount",
+				"Account number or amount Error", MessageBoxButtons::OK);
+		}
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("Failed to connect to database",
+			"Database Connection Error", MessageBoxButtons::OK);
+	}
+}
+private: System::Void bntClearOwn_Click(System::Object^ sender, System::EventArgs^ e) {
+	lbTransfer->Text = "";
+	tbAccount->Text = "";
+	tbAmount->Value = 0;
 }
 };
 }

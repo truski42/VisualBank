@@ -1,4 +1,6 @@
-#pragma once
+//#pragma once
+#ifndef CUSTOMERS_H
+#define	CUSTOMERS_H
 
 using namespace System;
 
@@ -6,7 +8,7 @@ public ref class Customers
 {
 public:
 	int id;
-	String^	firstName;
+	String^ firstName;
 	String^ lastName;
 	String^ email;
 	String^ password;
@@ -17,3 +19,4 @@ public:
 	Decimal^ soldo;
 	Decimal^ interlocks;
 };
+#endif // !CUSTOMERS_H

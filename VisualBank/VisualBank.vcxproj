@@ -157,6 +157,11 @@
       <DependentUpon>RegisterForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomPanels\CustomPanels.vcxproj">
+      <Project>{a06aaf78-82fc-4b97-b1bf-4ada249bf8c1}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,0 +1,12 @@
+﻿  pch.cpp
+  AssemblyInfo.cpp
+  CustomPanels.cpp
+  FXTransfer.cpp
+  NationalTransfer.cpp
+  OwnTransfer.cpp
+  TaxTransfer.cpp
+  TransferPanel.cpp
+  Generating Code...
+  .NETFramework,Version=v4.8.AssemblyAttributes.cpp
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  CustomPanels.vcxproj -> C:\git repository\truski42\VisualBank\x64\Debug\CustomPanels.dll

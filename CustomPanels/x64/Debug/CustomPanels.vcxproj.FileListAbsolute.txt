@@ -1,0 +1,7 @@
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.vcxproj.AssemblyReference.cache
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.FXTransfer.resources
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.NationalTransfer.resources
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.OwnTransfer.resources
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.TaxTransfer.resources
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.TransferPanel.resources
+C:\git repository\truski42\VisualBank\CustomPanels\x64\Debug\CustomPanels.vcxproj.GenerateResource.cache

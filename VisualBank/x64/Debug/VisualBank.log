@@ -1,7 +1,8 @@
 ﻿  MainForm.cpp
-  PaymentForm.cpp
+C:\git repository\truski42\VisualBank\VisualBank\MainForm.h(909,20): warning C4101: 'e': unreferenced local variable
   Program.cpp
-C:\git repository\VisualBank\VisualBank\BankForm.h(312,21): warning C4101: 'e': unreferenced local variable
+C:\git repository\truski42\VisualBank\VisualBank\BankForm.h(315,21): warning C4101: 'e': unreferenced local variable
+C:\git repository\truski42\VisualBank\VisualBank\MainForm.h(909,20): warning C4101: 'e': unreferenced local variable
   Generating Code...
   BankForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  VisualBank.vcxproj -> C:\git repository\VisualBank\x64\Debug\VisualBank.exe
+  VisualBank.vcxproj -> C:\git repository\truski42\VisualBank\x64\Debug\VisualBank.exe

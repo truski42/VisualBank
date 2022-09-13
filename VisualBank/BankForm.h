@@ -269,23 +269,27 @@ namespace VisualBank {
 		String^ accountNumber = this->tbAccount->Text;
 		String^ password = this->tbPassword->Text;
 
+		// checking for empty fields
 		if (accountNumber->Length == 0 || password->Length == 0) {
 			MessageBox::Show("Please eneter email and password",
 				"Email or Password Empty", MessageBoxButtons::OK);
 			return;
 		}
-
 		try {
+			// Attempt to connect to a database
+
 			String^ connString = "Data Source=localhost\\mssqlserver01;Initial Catalog=banksystem;Integrated Security=True";
 			SqlConnection sqlConn(connString);
 			sqlConn.Open();
+
+			// Creating a database query
 
 			String^ sqlQuery = "SELECT * FROM customers WHERE accountNumber=@accountNumber AND password=@password;";
 			SqlCommand command(sqlQuery, % sqlConn);
 			command.Parameters->AddWithValue("@accountNumber", accountNumber);
 			command.Parameters->AddWithValue("@password", password);
 
-
+			// Reading columns from the database
 			SqlDataReader^ reader = command.ExecuteReader();
 
 			if (reader->Read()) {
@@ -301,7 +305,6 @@ namespace VisualBank {
 				customer->availableBalance = reader->GetDecimal(8);
 				customer->soldo = reader->GetDecimal(9);
 				customer->interlocks = reader->GetDecimal(10);
-
 				this->Close();
 			}
 			else {

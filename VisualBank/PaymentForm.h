@@ -21,6 +21,7 @@ namespace VisualBank {
 			//
 			//TODO: Add the constructor code here
 			//
+			//MainForm^ dashboard = gcnew MainForm();
 		}
 
 	protected:
@@ -136,7 +137,7 @@ namespace VisualBank {
 			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button5->Location = System::Drawing::Point(5, 105);
+			this->button5->Location = System::Drawing::Point(5, 109);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(180, 40);
 			this->button5->TabIndex = 3;
@@ -151,7 +152,7 @@ namespace VisualBank {
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button4->Location = System::Drawing::Point(5, 71);
+			this->button4->Location = System::Drawing::Point(5, 75);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(180, 28);
 			this->button4->TabIndex = 2;
@@ -166,7 +167,7 @@ namespace VisualBank {
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button3->Location = System::Drawing::Point(5, 37);
+			this->button3->Location = System::Drawing::Point(5, 41);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(180, 28);
 			this->button3->TabIndex = 1;
@@ -181,7 +182,7 @@ namespace VisualBank {
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button2->Location = System::Drawing::Point(5, 3);
+			this->button2->Location = System::Drawing::Point(5, 7);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(180, 28);
 			this->button2->TabIndex = 0;
@@ -334,6 +335,7 @@ namespace VisualBank {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(6, 5, 6, 5);
 			this->Name = L"PaymentForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"PaymentForm";
 			this->Load += gcnew System::EventHandler(this, &PaymentForm::PaymentForm_Load);
 			this->panel3->ResumeLayout(false);
@@ -352,8 +354,8 @@ private: System::Void PaymentForm_Load(System::Object^ sender, System::EventArgs
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
-	MainForm^ dashboard = gcnew MainForm();
-	MdiParent->Show();
+	//MainForm^ dashboard = gcnew MainForm();
+	//MdiParent->Show();
 }
 };
 }
